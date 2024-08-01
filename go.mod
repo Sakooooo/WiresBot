@@ -2,7 +2,10 @@ module sakooooo/wiresbot
 
 go 1.22.5
 
-require github.com/disgoorg/disgo v0.18.9
+require (
+	github.com/disgoorg/disgo v0.18.9
+	github.com/joho/godotenv v1.5.1
+)
 
 require (
 	github.com/disgoorg/json v1.1.0 // indirect
