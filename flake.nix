@@ -28,7 +28,7 @@
     devShells = eachSystem (system: {
       default = pkgsFor.${system}.mkShell {
         name = "wiresbot-shell";
-        packages = with pkgsFor.${system}; [go gopls gotools go-tools imagemagick.dev];
+        packages = with pkgsFor.${system}; [go gopls gotools go-tools imagemagick];
       };
     });
 
