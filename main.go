@@ -11,6 +11,7 @@ import (
 	// discord
 	"github.com/disgoorg/disgo"
 	"github.com/disgoorg/disgo/bot"
+	"github.com/disgoorg/disgo/discord"
 	"github.com/disgoorg/disgo/events"
 	"github.com/disgoorg/disgo/gateway"
 
@@ -62,4 +63,22 @@ func main() {
 	s := make(chan os.Signal, 1)
 	signal.Notify(s, syscall.SIGINT, syscall.SIGTERM)
 	<-s
+}
+
+func onMessageCreate(event *events.MessageCreate) {
+	if event.Message.Author.Bot {
+		return
+	}
+
+	var message string
+
+	if event.Message.Content == "ping" {
+		message = "pong"
+	} else if event.Message.Content == "pong" {
+		message = "are you retarded?"
+	}
+
+	if message != "" {
+		_, _ = event.Client().Rest().CreateMessage(event.ChannelID, discord.NewMessageCreateBuilder().SetContent(message).Build())
+	}
 }
