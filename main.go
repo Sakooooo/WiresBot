@@ -47,12 +47,17 @@ func main() {
 		}),
 	)
 	if err != nil {
+		slog.Error("Failed to wire :(")
 		panic(err)
 	}
 	// connect to the gateway
 	if err = client.OpenGateway(context.TODO()); err != nil {
+		slog.Error("Failed to wire :(")
 		panic(err)
 	}
+
+	slog.Info("Wiring Complete.")
+	slog.Info("CTRL-C to stop wiring")
 
 	s := make(chan os.Signal, 1)
 	signal.Notify(s, syscall.SIGINT, syscall.SIGTERM)
