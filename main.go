@@ -30,8 +30,6 @@ func main() {
 		panic(err)
 	}
 
-	slog.Info("Wiring Complete.")
-
 	client, err := disgo.New(os.Getenv("TOKEN"),
 		// set gateway options
 		bot.WithGatewayConfigOpts(
@@ -40,12 +38,11 @@ func main() {
 				gateway.IntentGuilds,
 				gateway.IntentGuildMessages,
 				gateway.IntentDirectMessages,
+				gateway.IntentMessageContent,
 			),
 		),
 		// add event listeners
-		bot.WithEventListenerFunc(func(e *events.MessageCreate) {
-			// event code here
-		}),
+		bot.WithEventListenerFunc(onMessageCreate),
 	)
 	if err != nil {
 		slog.Error("Failed to wire :(")
