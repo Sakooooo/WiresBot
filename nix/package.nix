@@ -23,5 +23,6 @@ buildGoModule {
     description = "Wired";
     homepage = "https://github.com/Sakooooo/WiresBot";
     license = lib.licenses.gpl3Only;
+    mainProgram = "wiresbot";
   };
 }
