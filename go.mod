@@ -5,6 +5,7 @@ go 1.22.5
 require (
 	github.com/disgoorg/disgo v0.18.9
 	github.com/joho/godotenv v1.5.1
+	gopkg.in/gographics/imagick.v3 v3.7.0
 )
 
 require (
